@@ -9,7 +9,8 @@
   --border: #E8E3DC;
   --border-dark: #2A2622;
 
-  --serif: 'Montserrat', system-ui, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --display-alt: 'Montserrat', system-ui, sans-serif;
   --sans: 'DM Sans', system-ui, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -303,7 +304,7 @@ img { display: block; max-width: 100%; }
   font-weight: 500;
 }
 .hero-quote {
-  font-family: var(--serif);
+  font-family: var(--display-alt);
   font-style: italic;
   font-size: 19px;
   line-height: 1.55;
