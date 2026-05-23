@@ -9,7 +9,7 @@
   --border: #E8E3DC;
   --border-dark: #2A2622;
 
-  --serif: 'Playfair Display', Georgia, serif;
+  --serif: 'Montserrat', system-ui, sans-serif;
   --sans: 'DM Sans', system-ui, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
