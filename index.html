@@ -273,7 +273,7 @@ const SelectedWork = () => (
 const aboutCards = [
   {
     text: "Football is my reset button. No screens, no notifications — just the game. I always come back to design problems with a completely different head.",
-    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80',
     alt: 'Football',
   },
   {
@@ -299,7 +299,6 @@ const AboutTeaser = () => (
             <LineMask delay="2">the <span className="accent">work.</span></LineMask>
           </h2>
         </div>
-        <a href="#" className="text-link">More about me <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
       </Reveal>
       <div className="about-card-grid">
         {aboutCards.map((card, i) => (
@@ -310,6 +309,9 @@ const AboutTeaser = () => (
             </div>
           </Reveal>
         ))}
+      </div>
+      <div className="about-cta-center">
+        <a href="#" className="text-link">More about me <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
       </div>
     </div>
   </section>

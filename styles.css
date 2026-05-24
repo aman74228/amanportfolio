@@ -712,6 +712,12 @@ img { display: block; max-width: 100%; }
   gap: 10px;
 }
 
+.about-cta-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .about-card-label {
   font-family: var(--sans);
   font-size: 10px;
@@ -722,7 +728,7 @@ img { display: block; max-width: 100%; }
 }
 
 .about-card-text {
-  font-family: var(--serif);
+  font-family: var(--display-alt);
   font-style: italic;
   font-size: 15px;
   line-height: 1.65;
