@@ -490,7 +490,7 @@ img { display: block; max-width: 100%; }
 }
 
 .project-block + .project-block {
-  padding-top: 48px;
+  padding-top: 140px;
 }
 
 .project-inner {
@@ -641,7 +641,7 @@ img { display: block; max-width: 100%; }
 }
 
 .project-separator {
-  margin-top: 48px;
+  margin-top: 140px;
   height: 1px;
   background: #E8E3DC;
 }
