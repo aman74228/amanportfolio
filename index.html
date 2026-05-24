@@ -270,6 +270,29 @@ const SelectedWork = () => (
 );
 
 /* ===== ABOUT TEASER ===== */
+const aboutCards = [
+  {
+    label: 'Weekend hobby',
+    text: "On the pitch, I'm better at setting up plays than finishing them. Sound familiar to any PM?",
+    gradient: 'linear-gradient(135deg, #C17A3A 0%, #8B4E1E 100%)',
+  },
+  {
+    label: 'Guilty obsession',
+    text: "I stay up for qualifying laps. If I can track 20 cars at 300km/h, I can track your product roadmap.",
+    gradient: 'linear-gradient(135deg, #3A3530 0%, #1E1A16 100%)',
+  },
+  {
+    label: 'Fuel source',
+    text: "Always hunting the next great flat white. Good cafes and good design have one thing in common — both sweat the details.",
+    gradient: 'linear-gradient(135deg, #7B4A22 0%, #4E2C0E 100%)',
+  },
+  {
+    label: "Can't switch off",
+    text: "I redesign bad menus in my head while waiting for my order. It's a blessing and a curse.",
+    gradient: 'linear-gradient(135deg, #C9A87A 0%, #9E7D52 100%)',
+  },
+];
+
 const AboutTeaser = () => (
   <section className="section section-dark" id="about">
     <div className="container">
@@ -277,32 +300,23 @@ const AboutTeaser = () => (
         <div className="about-head-left">
           <span className="location-pill"><span className="dot"></span>Ahmedabad · India</span>
           <h2 className="section-title">
-            <LineMask delay="1">The designer</LineMask><br/>
-            <LineMask delay="2">behind the</LineMask><br/>
-            <LineMask delay="3"><span className="accent">work.</span></LineMask>
+            <LineMask delay="1">The designer behind</LineMask><br/>
+            <LineMask delay="2">the <span className="accent">work.</span></LineMask>
           </h2>
         </div>
         <a href="#" className="text-link">More about me <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
       </Reveal>
-      <div className="trait-grid">
-        {[
-          { n: '01', line: 'I sketch on napkins before opening Figma.' },
-          { n: '02', line: 'Five years of shipping, not just shipping pretty.' },
-          { n: '03', line: 'I read the research papers nobody asked me to.' },
-          { n: '04', line: 'Allergic to vibes-based design decisions.' },
-        ].map((t, i) => (
-          <Reveal key={t.n} delay={String(i + 1)} className="trait-card">
-            <span className="trait-num">{t.n}</span>
-            <p className="trait-line">&ldquo;{t.line}&rdquo;</p>
+      <div className="about-card-grid">
+        {aboutCards.map((card, i) => (
+          <Reveal key={i} delay={String(i + 1)} className="about-card">
+            <div className="about-card-image" style={{ background: card.gradient }}></div>
+            <div className="about-card-content">
+              <span className="about-card-label">{card.label}</span>
+              <p className="about-card-text">{card.text}</p>
+            </div>
           </Reveal>
         ))}
       </div>
-      <Reveal delay="2" className="personality-row">
-        <span className="personality-pill"><Icon name="football" size={15}/>Weekend footballer</span>
-        <span className="personality-pill"><Icon name="flag" size={15}/>F1 at midnight</span>
-        <span className="personality-pill"><Icon name="coffee" size={15}/>Cafe hunter</span>
-        <span className="personality-pill"><Icon name="pin" size={15}/>Ahmedabad</span>
-      </Reveal>
     </div>
   </section>
 );
