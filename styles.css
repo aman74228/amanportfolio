@@ -501,6 +501,7 @@ img { display: block; max-width: 100%; }
 
 .project-title-area {
   margin-bottom: 28px;
+  text-align: left;
 }
 
 .project-year {
@@ -532,7 +533,7 @@ img { display: block; max-width: 100%; }
 
 .project-thumbnail {
   width: 100%;
-  height: 540px;
+  height: 100vh;
   background-color: #EDE8E0;
   background-image: repeating-linear-gradient(
     -45deg,
@@ -571,7 +572,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 760px) {
   .project-details { grid-template-columns: 1fr; gap: 28px; }
-  .project-thumbnail { height: 300px; }
+  .project-thumbnail { height: 60vh; }
 }
 
 .project-description {
