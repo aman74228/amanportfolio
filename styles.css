@@ -500,7 +500,7 @@ img { display: block; max-width: 100%; }
 }
 
 .project-title-area {
-  margin-bottom: 40px;
+  padding-bottom: 80px;
   text-align: left;
 }
 
