@@ -46,67 +46,71 @@ const Nav = () => {
 /* ===== HERO ===== */
 const Hero = () => {
   const ref = React.useRef(null);
-  const photoRef = React.useRef(null);
   React.useEffect(() => {
-    // entry — trigger immediately after loader
     requestAnimationFrame(() => ref.current && ref.current.classList.add('is-in'));
-    // parallax
-    const onScroll = () => {
-      if (!photoRef.current) return;
-      const y = Math.min(window.scrollY, 700);
-      photoRef.current.style.transform = `translateY(${y * -0.08}px)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return (
     <section className="hero" id="top" ref={ref}>
-      <div className="hero-left">
-        <Reveal delay="0" className="reveal" style={{ width: 'fit-content' }}>
-          <span className="pill-tag"><span className="dot pulse"></span>Available for opportunities</span>
-        </Reveal>
+      <Reveal delay="1">
+        <h1 className="hero-heading">
+          <LineMask delay="1">Hi, I&rsquo;m</LineMask>
+          {' '}
+          <span className="hero-photo-inline"></span>
+          {' '}
+          <LineMask delay="2"><span className="accent">Aman!</span></LineMask>
+        </h1>
+      </Reveal>
+      <Reveal delay="3" className="hero-ctas">
+        <a href="#" className="btn btn-dark">
+          <Icon name="download" size={15}/> Download Resume
+        </a>
+        <a href="#work" className="text-link">
+          View my work <span className="arrow"><Icon name="arrow-right" size={16}/></span>
+        </a>
+      </Reveal>
+    </section>
+  );
+};
 
-        <Reveal delay="1">
-          <h1 className="hero-heading">
-            <LineMask delay="1">Hi, I&rsquo;m</LineMask><br/>
-            <LineMask delay="2"><span className="accent">Aman.</span></LineMask>
-          </h1>
-        </Reveal>
+/* ===== DESCRIPTION ===== */
+const DescSection = () => {
+  const ref = React.useRef(null);
+  const words = "I’m a UX and Product Designer based in Ahmedabad. I love making pixels behave — and occasionally convince stakeholders that ‘make it pop’ isn’t a design brief.".split(' ');
 
-        <Reveal delay="3" className="hero-job">Product &amp; UX Designer</Reveal>
+  React.useEffect(() => {
+    const section = ref.current;
+    if (!section) return;
+    const spans = Array.from(section.querySelectorAll('.desc-word'));
 
-        <Reveal delay="4">
-          <p className="hero-quote">
-            I make pixels behave — and occasionally convince stakeholders that &lsquo;make it pop&rsquo; isn&rsquo;t a design brief.
-          </p>
-        </Reveal>
+    const onScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1,
+        (window.innerHeight - rect.top) / window.innerHeight
+      ));
+      spans.forEach((span, i) => {
+        const wordProg = Math.max(0, Math.min(1, (progress - i / spans.length) * spans.length));
+        const r = Math.round(0x3A + (0xF5 - 0x3A) * wordProg);
+        const g = Math.round(0x37 + (0xF2 - 0x37) * wordProg);
+        const b = Math.round(0x30 + (0xEE - 0x30) * wordProg);
+        span.style.color = `rgb(${r},${g},${b})`;
+      });
+    };
 
-        <Reveal delay="5" className="hero-ctas">
-          <a href="#" className="btn btn-dark">
-            <Icon name="download" size={15}/> Download Resume
-          </a>
-          <a href="#work" className="text-link">
-            View my work <span className="arrow"><Icon name="arrow-right" size={16}/></span>
-          </a>
-        </Reveal>
-      </div>
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-      <div className="hero-right">
-        <Reveal delay="2">
-          <div className="hero-photo-wrap" ref={photoRef}>
-            <div className="hero-photo">
-              <div className="hero-photo-label">[ portrait — drop here ]</div>
-            </div>
-            <div className="hero-photo-tag"><span className="dot"></span>Based in India</div>
-          </div>
-        </Reveal>
-      </div>
-
-      <div className="scroll-hint">
-        <span className="line"></span>
-        Scroll to explore
-        <span className="arrow-circle"><Icon name="arrow-down" size={14}/></span>
-      </div>
+  return (
+    <section className="desc-section" ref={ref}>
+      <p className="desc-text">
+        {words.map((word, i) => (
+          <React.Fragment key={i}>
+            <span className="desc-word">{word}</span>
+            {i < words.length - 1 ? ' ' : ''}
+          </React.Fragment>
+        ))}
+      </p>
     </section>
   );
 };
@@ -547,6 +551,6 @@ const PageLoader = () => {
 };
 
 Object.assign(window, {
-  Reveal, LineMask, Nav, Hero, Marquee, SelectedWork, AboutTeaser,
+  Reveal, LineMask, Nav, Hero, DescSection, Marquee, SelectedWork, AboutTeaser,
   AiDesign, Testimonials, FAQ, Engagement, Footer, Cursor, PageLoader,
 });

@@ -4,6 +4,7 @@ const App = () => (
     <Cursor />
     <Nav />
     <Hero />
+    <DescSection />
     <Marquee />
     <SelectedWork />
     <AboutTeaser />
