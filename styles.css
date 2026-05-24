@@ -493,6 +493,12 @@ img { display: block; max-width: 100%; }
   padding-top: 48px;
 }
 
+.project-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
 .project-title-area {
   margin-bottom: 28px;
 }
@@ -535,7 +541,7 @@ img { display: block; max-width: 100%; }
     rgba(175, 165, 150, 0.18) 28px,
     rgba(175, 165, 150, 0.18) 29px
   );
-  border-radius: 12px;
+  border-radius: 0;
   position: relative;
   margin-bottom: 28px;
   overflow: hidden;
@@ -630,14 +636,6 @@ img { display: block; max-width: 100%; }
 }
 
 .project-cta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.project-ext-icon {
-  color: var(--muted);
   display: flex;
   align-items: center;
 }

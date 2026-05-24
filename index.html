@@ -217,30 +217,33 @@ const projects = [
 
 const ProjectBlock = ({ project, isLast }) => (
   <Reveal className="project-block">
-    <div className="project-title-area">
-      <div className="project-year">{project.year}</div>
-      <h3 className="project-name">{project.title}</h3>
-      <div className="project-subtitle">{project.subtitle}</div>
+    <div className="project-inner">
+      <div className="project-title-area">
+        <div className="project-year">{project.year}</div>
+        <h3 className="project-name">{project.title}</h3>
+        <div className="project-subtitle">{project.subtitle}</div>
+      </div>
     </div>
     <div className="project-thumbnail">
       <div className="project-image-label">[ {project.imageLabel} ]</div>
     </div>
-    <div className="project-details">
-      <div className="project-details-left">
-        <p className="project-description">{project.description}</p>
-        <ul className="project-bullets">
-          {project.bullets.map((b, i) => (
-            <li key={i} className="project-bullet"><span className="bullet-dot"></span>{b}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="project-details-right">
-        <div className="project-pills">
-          {project.pills.map((p, i) => <span className="project-pill" key={i}>{p}</span>)}
+    <div className="project-inner">
+      <div className="project-details">
+        <div className="project-details-left">
+          <p className="project-description">{project.description}</p>
+          <ul className="project-bullets">
+            {project.bullets.map((b, i) => (
+              <li key={i} className="project-bullet"><span className="bullet-dot"></span>{b}</li>
+            ))}
+          </ul>
         </div>
-        <div className="project-cta-row">
-          <a href="#" className="text-link">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
-          <span className="project-ext-icon"><Icon name="arrow-up-right" size={18}/></span>
+        <div className="project-details-right">
+          <div className="project-pills">
+            {project.pills.map((p, i) => <span className="project-pill" key={i}>{p}</span>)}
+          </div>
+          <div className="project-cta-row">
+            <a href="#" className="text-link">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -257,11 +260,11 @@ const SelectedWork = () => (
         </div>
         <a href="#" className="text-link is-muted">View all work <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
       </Reveal>
-      <div className="projects-list">
-        {projects.map((p, i) => (
-          <ProjectBlock key={p.title} project={p} isLast={i === projects.length - 1} />
-        ))}
-      </div>
+    </div>
+    <div className="projects-list">
+      {projects.map((p, i) => (
+        <ProjectBlock key={p.title} project={p} isLast={i === projects.length - 1} />
+      ))}
     </div>
   </section>
 );
