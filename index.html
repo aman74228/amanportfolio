@@ -272,24 +272,19 @@ const SelectedWork = () => (
 /* ===== ABOUT TEASER ===== */
 const aboutCards = [
   {
-    label: 'Weekend hobby',
-    text: "On the pitch, I'm better at setting up plays than finishing them. Sound familiar to any PM?",
-    gradient: 'linear-gradient(135deg, #C17A3A 0%, #8B4E1E 100%)',
+    text: "Football is my reset button. No screens, no notifications — just the game. I always come back to design problems with a completely different head.",
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80',
+    alt: 'Football',
   },
   {
-    label: 'Guilty obsession',
-    text: "I stay up for qualifying laps. If I can track 20 cars at 300km/h, I can track your product roadmap.",
-    gradient: 'linear-gradient(135deg, #3A3530 0%, #1E1A16 100%)',
+    text: "I watch every race, every qualifying session, every team radio breakdown. F1 is design at 300km/h — where a 0.1 second decision changes everything.",
+    image: 'https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=600&q=80',
+    alt: 'F1 Racing',
   },
   {
-    label: 'Fuel source',
-    text: "Always hunting the next great flat white. Good cafes and good design have one thing in common — both sweat the details.",
-    gradient: 'linear-gradient(135deg, #7B4A22 0%, #4E2C0E 100%)',
-  },
-  {
-    label: "Can't switch off",
-    text: "I redesign bad menus in my head while waiting for my order. It's a blessing and a curse.",
-    gradient: 'linear-gradient(135deg, #C9A87A 0%, #9E7D52 100%)',
+    text: "Coffee is non-negotiable. But it's less about caffeine and more about the ritual — finding a new spot, sitting with a thought, letting ideas breathe before I open Figma.",
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80',
+    alt: 'Coffee',
   },
 ];
 
@@ -309,9 +304,8 @@ const AboutTeaser = () => (
       <div className="about-card-grid">
         {aboutCards.map((card, i) => (
           <Reveal key={i} delay={String(i + 1)} className="about-card">
-            <div className="about-card-image" style={{ background: card.gradient }}></div>
+            <img src={card.image} alt={card.alt} className="about-card-image" />
             <div className="about-card-content">
-              <span className="about-card-label">{card.label}</span>
               <p className="about-card-text">{card.text}</p>
             </div>
           </Reveal>
