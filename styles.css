@@ -257,6 +257,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   display: inline-block;
   padding-bottom: 0.12em;
+  padding-left: 0.1em;
   padding-right: 0.18em;
   vertical-align: bottom;
   white-space: nowrap;
