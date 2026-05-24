@@ -55,7 +55,7 @@ const Hero = () => {
         <h1 className="hero-heading">
           <LineMask delay="1">Hi, I&rsquo;m</LineMask>
           {' '}
-          <span className="hero-photo-inline"></span>
+          <img src="Aman.jpeg" alt="Aman Patel" className="hero-photo-inline" />
           {' '}
           <LineMask delay="2"><span className="accent">Aman!</span></LineMask>
         </h1>
