@@ -83,7 +83,7 @@ const Hero = () => {
 /* ===== DESCRIPTION ===== */
 const DescSection = () => {
   const ref = React.useRef(null);
-  const words = "I’m a UX and Product Designer based in Ahmedabad. I love making pixels behave — and occasionally convince stakeholders that ‘make it pop’ isn’t a design brief.".split(' ');
+  const words = "I’m a UX and Product Designer based in Ahmedabad. I love making pixels behave and occasionally convince stakeholders that ‘make it pop’ isn’t a design brief.".split(‘ ‘);
 
   React.useEffect(() => {
     const section = ref.current;
