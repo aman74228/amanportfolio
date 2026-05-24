@@ -46,6 +46,7 @@ const Nav = () => {
 /* ===== HERO ===== */
 const Hero = () => {
   const ref = React.useRef(null);
+  const [photoColor, setPhotoColor] = React.useState(false);
   React.useEffect(() => {
     requestAnimationFrame(() => ref.current && ref.current.classList.add('is-in'));
   }, []);
@@ -55,7 +56,14 @@ const Hero = () => {
         <h1 className="hero-heading">
           <LineMask delay="1">Hi, I&rsquo;m</LineMask>
           {' '}
-          <img src="Aman.jpeg" alt="Aman Patel" className="hero-photo-inline" />
+          <img
+            src="Aman.jpeg"
+            alt="Aman Patel"
+            className="hero-photo-inline"
+            style={{ filter: photoColor ? 'grayscale(0)' : 'grayscale(1)' }}
+            onMouseEnter={() => setPhotoColor(true)}
+            onMouseLeave={() => setPhotoColor(false)}
+          />
           {' '}
           <LineMask delay="2"><span className="accent">Aman!</span></LineMask>
         </h1>
