@@ -257,8 +257,10 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   display: inline-block;
   padding-bottom: 0.12em;
-  padding-left: 0.1em;
-  padding-right: 0.18em;
+  padding-left: 0.35em;
+  padding-right: 0.35em;
+  margin-left: -0.35em;
+  margin-right: -0.35em;
   vertical-align: bottom;
   white-space: nowrap;
 }
