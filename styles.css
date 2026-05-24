@@ -257,6 +257,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   display: inline-block;
   padding-bottom: 0.12em;
+  padding-right: 0.18em;
   vertical-align: bottom;
   white-space: nowrap;
 }
@@ -296,13 +297,13 @@ img { display: block; max-width: 100%; }
 
 .hero-photo-inline {
   display: inline-block;
-  width: 88px;
-  height: 88px;
+  width: 120px;
+  height: 120px;
   border-radius: 16px;
   transform: rotate(-3deg);
   filter: grayscale(1);
   vertical-align: middle;
-  margin: 0 8px;
+  margin: 0 10px;
   background: linear-gradient(160deg, #E8D9C5 0%, #D4BFA2 100%);
   position: relative;
   overflow: hidden;
