@@ -319,35 +319,103 @@ const AboutTeaser = () => (
 
 /* ===== AI + DESIGN ===== */
 const AiDesign = () => {
+  const arenaRef = React.useRef(null);
+  const [triggered, setTriggered] = React.useState(false);
+  const [floatReady, setFloatReady] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = arenaRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggered(true);
+          setTimeout(() => setFloatReady(true), 1200);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const tools = [
-    { icon: 'sparkle', badge: 'Reasoning', name: 'ChatGPT & Claude', line: 'Pressure-tests copy, IA, and edge cases before review.' },
-    { icon: 'image', badge: 'Imagery', name: 'Midjourney & DALL·E', line: 'Mood boards and concept art in minutes, not days.' },
-    { icon: 'pen', badge: 'Writing', name: 'Notion AI', line: 'Tidies briefs, agendas, and the occasional roast deck.' },
-    { icon: 'grid', badge: 'Wireframes', name: 'Relume', line: 'Section scaffolds I rip apart and rebuild on purpose.' },
+    {
+      name: 'ChatGPT & Claude',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
+      pos: { top: '15%', left: '8%' },
+      floatAnim: 'float1 4s ease-in-out 0s infinite',
+      initTransform: 'translate(35vw, 22vh) scale(0.6)',
+      entryDelay: '0s',
+    },
+    {
+      name: 'Midjourney',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Midjourney_Emblem.png/240px-Midjourney_Emblem.png',
+      pos: { top: '12%', right: '8%' },
+      floatAnim: 'float2 5s ease-in-out 0.5s infinite',
+      initTransform: 'translate(-35vw, 22vh) scale(0.6)',
+      entryDelay: '0.1s',
+    },
+    {
+      name: 'Notion AI',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/512px-Notion-logo.svg.png',
+      pos: { bottom: '18%', left: '10%' },
+      floatAnim: 'float3 4.5s ease-in-out 1s infinite',
+      initTransform: 'translate(35vw, -22vh) scale(0.6)',
+      entryDelay: '0.2s',
+    },
+    {
+      name: 'Relume',
+      logo: null,
+      pos: { bottom: '15%', right: '9%' },
+      floatAnim: 'float4 3.8s ease-in-out 1.5s infinite',
+      initTransform: 'translate(-35vw, -22vh) scale(0.6)',
+      entryDelay: '0.3s',
+    },
   ];
+
   return (
-    <section className="section">
+    <section className="section ai-section">
       <div className="container">
-        <Reveal className="section-header">
-          <div className="section-eyebrow-wrap">
-            <span className="eyebrow">03 — AI + Design</span>
-            <h2 className="section-title">
-              <LineMask delay="1">My unfair</LineMask><br/>
-              <LineMask delay="2"><span className="accent">advantage.</span></LineMask>
-            </h2>
+        <div className="ai-header">
+          <span className="eyebrow">03 — AI + Design</span>
+          <p className="ai-tagline">AI doesn&rsquo;t do the work. It keeps up with me while I do.</p>
+        </div>
+
+        <div className="ai-arena" ref={arenaRef}>
+          <div className={`ai-center-text${triggered ? ' ai-center-in' : ''}`}>
+            <p className="ai-center-line1">My unfair</p>
+            <p className="ai-center-line2"><em>advantage.</em></p>
           </div>
-          <p className="ai-intro">AI doesn&rsquo;t do the work.<br/>It keeps up with me while I do.</p>
-        </Reveal>
-        <div className="ai-grid">
-          {tools.map((t, i) => (
-            <Reveal key={t.name} delay={String(i + 1)} className="ai-card">
-              <div className="ai-icon-box"><Icon name={t.icon} size={20}/></div>
-              <span className="ai-badge">{t.badge}</span>
-              <h3 className="ai-name">{t.name}</h3>
-              <p className="ai-line">{t.line}</p>
-            </Reveal>
+
+          {tools.map((tool, i) => (
+            <div
+              key={tool.name}
+              className="ai-tool-outer"
+              style={{
+                ...tool.pos,
+                animation: floatReady ? tool.floatAnim : 'none',
+              }}
+            >
+              <div
+                className="ai-tool-card"
+                style={{
+                  transform: triggered ? 'none' : tool.initTransform,
+                  opacity: triggered ? 1 : 0,
+                  transition: `transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${tool.entryDelay}, opacity 0.5s ease ${tool.entryDelay}`,
+                }}
+              >
+                {tool.logo
+                  ? <img src={tool.logo} alt={tool.name} className="ai-tool-logo" />
+                  : <div className="ai-tool-logo-r">R</div>
+                }
+                <span className="ai-tool-name">{tool.name}</span>
+              </div>
+            </div>
           ))}
         </div>
+
         <Reveal delay="2" className="ai-note">
           <span className="dot"></span>
           <span>The effort is still real. AI handles the groundwork. <em>I handle the craft.</em></span>
