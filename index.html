@@ -190,84 +190,117 @@ const projects = [
   {
     year: '2025',
     title: "Drake's Lawn & Pest Control",
-    subtitle: 'Redesign · Pest Control · USA',
     description: 'Redesigning a multi-location pest control website to modernise the brand and make booking a service effortless.',
     bullets: [
       'Pingdom performance rating improved from C to A',
       'Monthly traffic grew by 12.3% post-launch',
       'Best Practices score 96/100',
     ],
-    pills: ['Redesign', 'Pest Control · USA'],
+    pills: ['Redesign', 'Pest Control', 'USA'],
     imageLabel: "PRODUCT SHOT — DRAKE'S LAWN & PEST CONTROL",
   },
   {
     year: '2025',
     title: 'Penmar Wealth Management',
-    subtitle: 'New Build · Wealth Management · USA',
     description: 'Building a complete digital presence from scratch for a boutique fiduciary advisory firm in Santa Monica.',
     bullets: [
       'SEO score 100/100 on PageSpeed',
       'Best Practices 100/100',
       'Desktop speed index 1.1s',
     ],
-    pills: ['New Build', 'Wealth Mgmt · USA'],
+    pills: ['New Build', 'Wealth Mgmt', 'USA'],
     imageLabel: 'PRODUCT SHOT — PENMAR WEALTH MANAGEMENT',
   },
 ];
 
-const ProjectBlock = ({ project, isLast }) => (
-  <Reveal className="project-block">
-    <div className="project-inner">
-      <div className="project-title-area">
-        <div className="project-year">{project.year}</div>
-        <h3 className="project-name">{project.title}</h3>
-        <div className="project-subtitle">{project.subtitle}</div>
+const ProjectBlock = ({ project, isLast }) => {
+  const blockRef = React.useRef(null);
+  const [thumbIn, setThumbIn] = React.useState(false);
+  const [detailsIn, setDetailsIn] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = blockRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setThumbIn(true);
+          setTimeout(() => setDetailsIn(true), 200);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div className="sw-block" ref={blockRef}>
+      <div className="sw-thumb-wrap">
+        <div className={`sw-thumb${thumbIn ? ' sw-thumb--in' : ''}`}>
+          <div className="sw-thumb-label">[ {project.imageLabel} ]</div>
+        </div>
       </div>
-    </div>
-    <div className="project-thumbnail">
-      <div className="project-image-label">[ {project.imageLabel} ]</div>
-    </div>
-    <div className="project-inner">
-      <div className="project-details">
-        <div className="project-details-left">
-          <p className="project-description">{project.description}</p>
-          <ul className="project-bullets">
+      <div className={`sw-details${detailsIn ? ' sw-details--in' : ''}`}>
+        <div className="sw-details-left">
+          <h3 className="sw-project-title">{project.title}</h3>
+          <p className="sw-project-desc">{project.description}</p>
+          <ul className="sw-bullets">
             {project.bullets.map((b, i) => (
-              <li key={i} className="project-bullet"><span className="bullet-dot"></span>{b}</li>
+              <li key={i} className="sw-bullet"><span className="sw-dot"></span>{b}</li>
             ))}
           </ul>
         </div>
-        <div className="project-details-right">
-          <div className="project-pills">
-            {project.pills.map((p, i) => <span className="project-pill" key={i}>{p}</span>)}
+        <div className="sw-details-right">
+          <div className="sw-pills">
+            {project.pills.map((pill, i) => <span className="sw-pill" key={i}>{pill}</span>)}
           </div>
-          <div className="project-cta-row">
-            <a href="#" className="text-link">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
-          </div>
+          <a href="#" className="text-link sw-cta">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
         </div>
       </div>
+      {!isLast && <div className="sw-separator"></div>}
     </div>
-    {!isLast && <div className="project-separator"></div>}
-  </Reveal>
-);
+  );
+};
 
-const SelectedWork = () => (
-  <section className="section" id="work">
-    <div className="container">
-      <Reveal className="section-header">
-        <div className="section-eyebrow-wrap">
-          <span className="eyebrow">02 — Selected Work</span>
+const SelectedWork = () => {
+  const headRef = React.useRef(null);
+  const [headIn, setHeadIn] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = headRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setHeadIn(true); io.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <section className="section sw-section" id="work">
+      <div className="container">
+        <div className={`sw-heading${headIn ? ' sw-heading--in' : ''}`} ref={headRef}>
+          <span className="sw-eyebrow">02 — Selected Work</span>
+          <h2 className="sw-title">
+            Projects that<br/><em>shipped.</em>
+          </h2>
+          <div className="sw-year-stamp">2K25</div>
         </div>
-        <a href="#" className="text-link is-muted">View all work <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
-      </Reveal>
-    </div>
-    <div className="projects-list">
-      {projects.map((p, i) => (
-        <ProjectBlock key={p.title} project={p} isLast={i === projects.length - 1} />
-      ))}
-    </div>
-  </section>
-);
+        <div className="sw-projects">
+          {projects.map((p, i) => (
+            <ProjectBlock key={p.title} project={p} isLast={i === projects.length - 1} />
+          ))}
+        </div>
+        <div className="sw-more-soon">
+          <span>More coming soon</span>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ===== ABOUT TEASER ===== */
 const aboutCards = [
