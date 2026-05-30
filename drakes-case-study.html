@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drake's Lawn &amp; Pest Control — Case Study | Aman Patel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@400;500;600&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ============ NAV — DARK HERO OVERRIDES ============ */
+    .nav:not(.is-scrolled) {
+      background: transparent;
+    }
+    .nav:not(.is-scrolled) .nav-logo,
+    .nav:not(.is-scrolled) .cs-back {
+      color: rgba(245, 242, 238, 0.9);
+    }
+    .nav:not(.is-scrolled) .nav-logo em {
+      color: #C17A3A;
+    }
+    .nav:not(.is-scrolled) .nav-link {
+      color: rgba(245, 242, 238, 0.65);
+    }
+    .nav:not(.is-scrolled) .nav-link:hover {
+      color: rgba(245, 242, 238, 1);
+    }
+
+    /* ============ NAV LEFT GROUP ============ */
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .cs-back {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.25s ease;
+    }
+    .cs-back:hover {
+      color: var(--text);
+    }
+    .nav:not(.is-scrolled) .cs-back {
+      color: rgba(245, 242, 238, 0.5);
+    }
+    .nav:not(.is-scrolled) .cs-back:hover {
+      color: rgba(245, 242, 238, 0.9);
+    }
+
+    /* ============ HERO ============ */
+    .cs-hero {
+      height: 520px;
+      background: #1C1A17;
+      background-image: repeating-linear-gradient(
+        135deg,
+        #1C1A17 0px,
+        #1C1A17 28px,
+        #242018 28px,
+        #242018 56px
+      );
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 45%, transparent 70%);
+      display: flex;
+      align-items: flex-end;
+    }
+    .cs-hero-inner {
+      max-width: var(--container);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--gutter) 48px;
+    }
+    .cs-hero-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .cs-hero-content.is-in {
+      opacity: 1;
+      transform: none;
+    }
+    .cs-hero-pill {
+      display: inline-block;
+      border: 1px solid #C17A3A;
+      color: #C17A3A;
+      background: rgba(28, 26, 23, 0.5);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .cs-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #F5F2EE;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .cs-hero-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: rgba(245, 242, 238, 0.65);
+      line-height: 1.65;
+      max-width: 620px;
+    }
+
+    /* ============ META BAR ============ */
+    .cs-meta-bar {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #E8E3DC;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .cs-meta-cell {
+      padding: 20px 28px;
+      border-right: 1px solid #E8E3DC;
+    }
+    .cs-meta-cell:last-child {
+      border-right: none;
+    }
+    .cs-meta-label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: #9A9188;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .cs-meta-val {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1C1A17;
+    }
+
+    /* ============ TWO-COLUMN LAYOUT ============ */
+    .cs-layout {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+    }
+    .cs-sidebar {
+      position: sticky;
+      top: 72px;
+      align-self: start;
+      padding: 56px 24px 56px 0;
+      border-right: 1px solid #E8E3DC;
+    }
+    .cs-main {
+      padding: 56px 0 56px 60px;
+    }
+
+    /* ============ SIDEBAR NAV ============ */
+    .cs-sidebar-label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: #9A9188;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cs-sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #9A9188;
+      padding: 7px 10px;
+      border-left: 2px solid transparent;
+      border-radius: 0 6px 6px 0;
+      transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      display: block;
+    }
+    .cs-nav-link:hover {
+      color: #1C1A17;
+    }
+    .cs-nav-link.active {
+      color: #C17A3A;
+      border-left-color: #C17A3A;
+      background: rgba(193, 122, 58, 0.06);
+    }
+
+    /* ============ IMAGE PLACEHOLDERS ============ */
+    .cs-placeholder {
+      background: #EDE9E3;
+      border: 1px solid #E2DDD7;
+      border-radius: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
+    }
+    .cs-placeholder-icon {}
+    .cs-placeholder-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #C4BDB5;
+      text-align: center;
+    }
+    .cs-placeholder-stamp {
+      position: absolute;
+      bottom: 14px;
+      left: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(28, 26, 23, 0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .cs-img-caption {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-style: italic;
+      color: #9A9188;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 32px;
+    }
+
+    /* ============ SECTION BASE STYLES ============ */
+    .cs-section {
+      padding-bottom: 72px;
+      border-bottom: 1px solid #F0ECE7;
+      margin-bottom: 64px;
+    }
+    .cs-section:last-of-type {
+      border-bottom: none;
+    }
+    .cs-section-eyebrow {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #C17A3A;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cs-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1C1A17;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .cs-p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: #5A5249;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    /* ============ SCROLL REVEAL ============ */
+    .cs-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cs-reveal.is-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============ PROBLEM GRID ============ */
+    .cs-problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .cs-problem-card {
+      background: #fff;
+      border: 1px solid #E8E3DC;
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+    .cs-card-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .cs-card-label--problem {
+      color: #A32D2D;
+    }
+    .cs-card-label--insight {
+      color: #C17A3A;
+    }
+    .cs-card-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: #5A5249;
+      line-height: 1.7;
+    }
+
+    /* ============ INSIGHT GRID ============ */
+    .cs-insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    /* ============ DECISION BLOCKS ============ */
+    .cs-decision {
+      background: #fff;
+      border: 1px solid #E8E3DC;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 14px;
+    }
+    .cs-decision-q {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: #9A9188;
+      margin-bottom: 8px;
+    }
+    .cs-decision-a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #1C1A17;
+      line-height: 1.75;
+    }
+    .cs-hl {
+      color: #C17A3A;
+      font-weight: 500;
+    }
+
+    /* ============ WIREFRAMES GRIDS ============ */
+    .cs-wireframes-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-wireframes-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    /* ============ ANNOTATION BLOCK ============ */
+    .cs-annotation {
+      background: #FBF7F2;
+      border: 1px solid #EDE9E3;
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .cs-annotation-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #C17A3A;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .cs-annotation-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #5A5249;
+      line-height: 1.75;
+    }
+
+    /* ============ BEFORE / AFTER GRID ============ */
+    .cs-ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #E8E3DC;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 32px;
+      margin-bottom: 10px;
+    }
+    .cs-ba-col {}
+    .cs-ba-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+    }
+    .cs-ba-label--before {
+      background: #F0ECE6;
+      color: #9A9188;
+    }
+    .cs-ba-label--after {
+      background: #2D5C33;
+      color: #fff;
+    }
+    .cs-ba-placeholder {
+      background: #EDE9E3;
+      border: none;
+      border-radius: 0;
+    }
+
+    /* ============ VISUAL DESIGN 2-COL ============ */
+    .cs-visual-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    /* ============ SCREENS 3-COL ============ */
+    .cs-screens-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    /* ============ METRICS GRID ============ */
+    .cs-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .cs-metric-card {
+      background: #fff;
+      border: 1px solid #E8E3DC;
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+    .cs-metric-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1C1A17;
+      margin-bottom: 6px;
+    }
+    .cs-metric-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #9A9188;
+      line-height: 1.5;
+    }
+
+    /* ============ RESULTS INSIGHT CARDS ============ */
+    .cs-results-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-results-card {
+      background: #fff;
+      border: 1px solid #E8E3DC;
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+    .cs-results-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cs-results-label--traffic {
+      color: #2D5C33;
+    }
+    .cs-results-label--perf {
+      color: #C17A3A;
+    }
+    .cs-results-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: #5A5249;
+      line-height: 1.7;
+    }
+
+    /* ============ DARK QUOTE BLOCK ============ */
+    .cs-dark-quote {
+      background: #1C1A17;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+    .cs-dark-quote-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: #8A8178;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .cs-dark-quote-attr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #C17A3A;
+    }
+
+    /* ============ NEXT PROJECT CARD ============ */
+    .cs-next-wrap {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter) 80px;
+    }
+    .cs-next-card {
+      background: #fff;
+      border: 1px solid #E8E3DC;
+      border-radius: 20px;
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .cs-next-card:hover {
+      border-color: #C17A3A;
+      transform: translateY(-3px);
+    }
+    .cs-next-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9A9188;
+      margin-bottom: 10px;
+    }
+    .cs-next-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1C1A17;
+      transition: color 0.2s ease;
+    }
+    .cs-next-card:hover .cs-next-title {
+      color: #C17A3A;
+    }
+    .cs-next-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #E8E3DC;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .cs-next-arrow svg {
+      color: #1C1A17;
+      transition: color 0.2s ease;
+    }
+    .cs-next-card:hover .cs-next-arrow {
+      background: #C17A3A;
+      border-color: #C17A3A;
+    }
+    .cs-next-card:hover .cs-next-arrow svg {
+      color: #fff;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 960px) {
+      .cs-layout { grid-template-columns: 1fr; }
+      .cs-sidebar { display: none; }
+      .cs-main { padding: 40px 0; }
+      .cs-problem-grid,
+      .cs-insight-grid,
+      .cs-metrics-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .cs-problem-grid,
+      .cs-insight-grid,
+      .cs-metrics-grid,
+      .cs-wireframes-2col,
+      .cs-wireframes-3col,
+      .cs-screens-3col { grid-template-columns: 1fr; }
+      .cs-ba-grid { grid-template-columns: 1fr; }
+      .cs-hero-title { font-size: 36px; }
+      .cs-meta-bar { grid-template-columns: repeat(2, 1fr); }
+      .cs-results-2col { grid-template-columns: 1fr; }
+      .cs-visual-2col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-left-group">
+      <a href="index.html#work" class="cs-back">← Back to work</a>
+      <a href="index.html" class="nav-logo">Aman <em>Patel</em></a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#work" class="nav-link">Work</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-hero-overlay">
+      <div class="cs-hero-inner">
+        <div class="cs-hero-content">
+          <span class="cs-hero-pill">Redesign · Oct – Nov 2025</span>
+          <h1 class="cs-hero-title">Drake's Lawn &amp; Pest Control</h1>
+          <p class="cs-hero-subtitle">How we turned a slow, outdated pest control website into a lead-generating machine that competes with national brands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- META BAR -->
+  <div class="cs-meta-bar">
+    <div class="cs-meta-cell">
+      <span class="cs-meta-label">My Role</span>
+      <span class="cs-meta-val">Lead Designer (Solo)</span>
+    </div>
+    <div class="cs-meta-cell">
+      <span class="cs-meta-label">Timeline</span>
+      <span class="cs-meta-val">8 weeks</span>
+    </div>
+    <div class="cs-meta-cell">
+      <span class="cs-meta-label">Platform</span>
+      <span class="cs-meta-val">WordPress</span>
+    </div>
+    <div class="cs-meta-cell">
+      <span class="cs-meta-label">Deliverables</span>
+      <span class="cs-meta-val">10 pages + style guide</span>
+    </div>
+    <div class="cs-meta-cell">
+      <span class="cs-meta-label">Sector</span>
+      <span class="cs-meta-val">Pest Control · USA</span>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN LAYOUT -->
+  <div class="cs-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="cs-sidebar">
+      <span class="cs-sidebar-label">On this page</span>
+      <nav class="cs-sidebar-nav">
+        <a href="#context" class="cs-nav-link active">Context</a>
+        <a href="#problem" class="cs-nav-link">The Problem</a>
+        <a href="#research" class="cs-nav-link">Research</a>
+        <a href="#decisions" class="cs-nav-link">Design Decisions</a>
+        <a href="#wireframes" class="cs-nav-link">Wireframes</a>
+        <a href="#visual" class="cs-nav-link">Visual Design</a>
+        <a href="#screens" class="cs-nav-link">Final Screens</a>
+        <a href="#results" class="cs-nav-link">Results</a>
+        <a href="#reflection" class="cs-nav-link">Reflection</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="cs-main">
+
+      <!-- SECTION 01 — CONTEXT -->
+      <section class="cs-section cs-reveal" id="context">
+        <span class="cs-section-eyebrow">01 — Context</span>
+        <h2 class="cs-h2">A family business losing ground to bigger players</h2>
+        <p class="cs-p">Drake's Lawn &amp; Pest Control has served five locations across the United States for years. But their website hadn't kept up. While competitors like TruGreen and Terminix invested heavily in their digital presence, Drake's was operating with a site that felt dated, loaded slowly, and gave visitors no clear reason to pick up the phone.</p>
+        <p class="cs-p">The brief was clear: redesign and rebuild the site in WordPress — modernise the brand, fix the navigation, and make 'Book a Free Pest Inspection' the most obvious thing on every page.</p>
+        <figure>
+          <div class="cs-placeholder" style="height: 400px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Old website screenshot — homepage ]</span>
+            <span class="cs-placeholder-stamp">BEFORE — drakepest.com (Oct 2025)</span>
+          </div>
+          <figcaption class="cs-img-caption">The old homepage — no clear CTA, cluttered navigation, generic design</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 02 — THE PROBLEM -->
+      <section class="cs-section cs-reveal" id="problem">
+        <span class="cs-section-eyebrow">02 — The Problem</span>
+        <h2 class="cs-h2">Four things that were actively losing them business</h2>
+        <p class="cs-p">Before touching Figma, I spent time auditing the existing site against heuristics, reviewing client feedback, and mapping where the experience broke down. The problems weren't cosmetic — they were structural.</p>
+
+        <div class="cs-problem-grid">
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--problem">Navigation chaos</div>
+            <p class="cs-card-body">Pest control, lawn care, financing, and about us were all at the same level in the menu. Visitors couldn't quickly find what they needed — and most didn't try twice.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--problem">No lead capture system</div>
+            <p class="cs-card-body">The contact form was buried on a separate page with no CTA on the homepage to guide visitors toward it. Bookings were happening despite the site, not because of it.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--problem">Poor performance</div>
+            <p class="cs-card-body">Pingdom rating of C. Uncompressed images, no caching, inconsistent mobile layouts. The site was slow on desktop and broken on mobile.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--problem">Brand not working hard enough</div>
+            <p class="cs-card-body">The yellow, brown, and green palette was fine — but applied generically. Nothing felt premium or trustworthy. Alongside TruGreen, they looked like a different league entirely.</p>
+          </div>
+        </div>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ UX Audit — annotated screenshots of pain points ]</span>
+            <span class="cs-placeholder-stamp">UX AUDIT — annotated screenshots</span>
+          </div>
+          <figcaption class="cs-img-caption">Annotated audit showing navigation issues, missing CTAs, and layout problems</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 03 — RESEARCH -->
+      <section class="cs-section cs-reveal" id="research">
+        <span class="cs-section-eyebrow">03 — Research &amp; Discovery</span>
+        <h2 class="cs-h2">Understanding the competitive landscape</h2>
+        <p class="cs-p">The client gave me four reference sites: TruGreen, Terminix, Orkin, and Massey Services. Rather than just looking at them aesthetically, I broke down exactly what design patterns they used to build trust, guide users, and convert visits into bookings.</p>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Competitive Audit — pattern analysis ]</span>
+            <span class="cs-placeholder-stamp">COMPETITIVE AUDIT — TruGreen, Terminix, Orkin, Massey</span>
+          </div>
+          <figcaption class="cs-img-caption">Side-by-side analysis of hero patterns, navigation structure, and CTA placement across competitors</figcaption>
+        </figure>
+
+        <p class="cs-p">Three patterns showed up consistently across all four competitors that Drake's was missing:</p>
+
+        <div class="cs-insight-grid">
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--insight">Reviews above the fold</div>
+            <p class="cs-card-body">Every top competitor surfaced star ratings and customer counts in the hero section — before the user even started scrolling.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--insight">One dominant CTA</div>
+            <p class="cs-card-body">'Get a Free Quote' or 'Book an Inspection' — one action, repeated everywhere. No confusion about what to do next.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--insight">Service mega menus</div>
+            <p class="cs-card-body">Pest types organized into a structured dropdown — making the breadth of service feel like a feature, not a complexity.</p>
+          </div>
+          <div class="cs-problem-card">
+            <div class="cs-card-label cs-card-label--insight">Location-aware content</div>
+            <p class="cs-card-body">Branch pages and city landing pages tailored to local areas — giving the brand a national feel with local relevance.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04 — DESIGN DECISIONS -->
+      <section class="cs-section cs-reveal" id="decisions">
+        <span class="cs-section-eyebrow">04 — Design Decisions</span>
+        <h2 class="cs-h2">The thinking behind the choices</h2>
+        <p class="cs-p">This is the part most portfolios skip. Here's exactly why I made the decisions I made — not just what I did.</p>
+
+        <div class="cs-decision">
+          <p class="cs-decision-q">Why a mega menu for pest control?</p>
+          <p class="cs-decision-a">The old navigation tried to hide the complexity — one 'Pest Control' link that led to a wall of text. But complexity is a trust signal in this industry. A mega menu showing <strong class="cs-hl">17 pest types</strong> tells the visitor: we know our stuff. It also reduces the number of clicks to reach a specific pest page from <strong class="cs-hl">3+ to 1</strong>.</p>
+        </div>
+
+        <div class="cs-decision">
+          <p class="cs-decision-q">Why move reviews to the top of the homepage?</p>
+          <p class="cs-decision-a">Pest control is a high-trust purchase — someone is letting a stranger into their home. Research consistently shows that <strong class="cs-hl">social proof needs to appear before the user is asked to take any action.</strong> Moving reviews above the fold reduced the trust gap before the CTA.</p>
+        </div>
+
+        <div class="cs-decision">
+          <p class="cs-decision-q">Why a sticky header with a phone number?</p>
+          <p class="cs-decision-a">Analytics showed the <strong class="cs-hl">phone was the preferred contact method.</strong> A rotating phone number in the sticky header meant that no matter where a visitor was on the site, the fastest path to contact was always visible.</p>
+        </div>
+
+        <div class="cs-decision">
+          <p class="cs-decision-q">Why city and branch landing pages?</p>
+          <p class="cs-decision-a">Local SEO. Generic service pages rank poorly for local searches like <strong class="cs-hl">'pest control in [city].'</strong> Dedicated city pages with local content give Drake's a chance to rank in each of their service areas — turning the site into an <strong class="cs-hl">organic lead source</strong>, not just a brochure.</p>
+        </div>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Information Architecture — redesigned IA ]</span>
+            <span class="cs-placeholder-stamp">IA — site structure and navigation hierarchy</span>
+          </div>
+          <figcaption class="cs-img-caption">Redesigned IA — services as the primary axis, secondary items moved to header/footer</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 05 — WIREFRAMES -->
+      <section class="cs-section cs-reveal" id="wireframes">
+        <span class="cs-section-eyebrow">05 — Wireframes</span>
+        <h2 class="cs-h2">Structure before style</h2>
+        <p class="cs-p">I wireframed all 10 unique page types before touching colour or typography. The goal was to validate the layout logic and content hierarchy independently of how it looked.</p>
+
+        <div class="cs-wireframes-2col">
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Homepage wireframe ]</span>
+            <span class="cs-placeholder-stamp">WIREFRAME — Homepage</span>
+          </div>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Service Page wireframe ]</span>
+            <span class="cs-placeholder-stamp">WIREFRAME — Service Page</span>
+          </div>
+        </div>
+
+        <div class="cs-wireframes-3col">
+          <div class="cs-placeholder" style="height: 200px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Branch landing page ]</span>
+            <span class="cs-placeholder-stamp">WIREFRAME — Branch page</span>
+          </div>
+          <div class="cs-placeholder" style="height: 200px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ City landing page ]</span>
+            <span class="cs-placeholder-stamp">WIREFRAME — City page</span>
+          </div>
+          <div class="cs-placeholder" style="height: 200px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Contact page ]</span>
+            <span class="cs-placeholder-stamp">WIREFRAME — Contact page</span>
+          </div>
+        </div>
+
+        <div class="cs-annotation">
+          <div class="cs-annotation-dot"></div>
+          <p class="cs-annotation-text">Design decision at wireframe stage: I tested two homepage layouts — one with the hero leading with imagery, one with a split hero (text + CTA left, trust signals right). The split version was chosen because it put the CTA and social proof in the same viewport without scrolling.</p>
+        </div>
+      </section>
+
+      <!-- SECTION 06 — VISUAL DESIGN -->
+      <section class="cs-section cs-reveal" id="visual">
+        <span class="cs-section-eyebrow">06 — Visual Design</span>
+        <h2 class="cs-h2">Making the brand earn its place</h2>
+        <p class="cs-p">The existing brand colours — yellow, brown, and green — were retained at the client's request. But the system around them was entirely rebuilt. A distinctive typeface, a custom icon set, and a clear typographic hierarchy gave the brand the premium feel it was missing.</p>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Style guide — full system ]</span>
+            <span class="cs-placeholder-stamp">STYLE GUIDE — colours, typography, icons</span>
+          </div>
+          <figcaption class="cs-img-caption">Full style guide — colour system, type scale, icon set, component library</figcaption>
+        </figure>
+
+        <figure>
+          <div class="cs-ba-grid">
+            <div class="cs-ba-col">
+              <div class="cs-ba-label cs-ba-label--before">Before</div>
+              <div class="cs-placeholder cs-ba-placeholder" style="height: 220px; border-radius: 0;">
+                <div class="cs-placeholder-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                </div>
+                <span class="cs-placeholder-text">[ Before — hero section ]</span>
+              </div>
+            </div>
+            <div class="cs-ba-col">
+              <div class="cs-ba-label cs-ba-label--after">After</div>
+              <div class="cs-placeholder cs-ba-placeholder" style="height: 220px; border-radius: 0;">
+                <div class="cs-placeholder-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                </div>
+                <span class="cs-placeholder-text">[ After — hero section ]</span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="cs-img-caption">Before &amp; after — homepage hero section</figcaption>
+        </figure>
+
+        <div class="cs-visual-2col">
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Mobile homepage ]</span>
+            <span class="cs-placeholder-stamp">MOBILE — homepage</span>
+          </div>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Mega menu — desktop ]</span>
+            <span class="cs-placeholder-stamp">DESKTOP — mega menu</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 07 — FINAL SCREENS -->
+      <section class="cs-section cs-reveal" id="screens">
+        <span class="cs-section-eyebrow">07 — Final Screens</span>
+        <h2 class="cs-h2">The finished product</h2>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 500px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Homepage — final ]</span>
+            <span class="cs-placeholder-stamp">HOMEPAGE — FINAL DESIGN</span>
+          </div>
+          <figcaption class="cs-img-caption">Full homepage design — desktop</figcaption>
+        </figure>
+
+        <div class="cs-screens-3col">
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Pest type template ]</span>
+            <span class="cs-placeholder-stamp">PEST TYPE — template page</span>
+          </div>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Branch locator ]</span>
+            <span class="cs-placeholder-stamp">BRANCH LOCATOR — zip search</span>
+          </div>
+          <div class="cs-placeholder" style="height: 280px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Mobile service page ]</span>
+            <span class="cs-placeholder-stamp">MOBILE — service page</span>
+          </div>
+        </div>
+
+        <figure>
+          <div class="cs-placeholder" style="height: 500px; margin-top: 16px;">
+            <div class="cs-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4BDB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="cs-placeholder-text">[ Full deliverable — all 10 pages ]</span>
+            <span class="cs-placeholder-stamp">ALL PAGES — 10 final designs</span>
+          </div>
+          <figcaption class="cs-img-caption">All 10 page designs — full deliverable overview</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 08 — RESULTS -->
+      <section class="cs-section cs-reveal" id="results">
+        <span class="cs-section-eyebrow">08 — Results</span>
+        <h2 class="cs-h2">What changed after launch</h2>
+        <p class="cs-p">The site launched in November 2025. Here's what the data showed in the months following.</p>
+
+        <div class="cs-metrics-grid">
+          <div class="cs-metric-card">
+            <div class="cs-metric-val">C → A</div>
+            <div class="cs-metric-desc">Pingdom performance rating improved</div>
+          </div>
+          <div class="cs-metric-card">
+            <div class="cs-metric-val">90</div>
+            <div class="cs-metric-desc">Accessibility score on PageSpeed</div>
+          </div>
+          <div class="cs-metric-card">
+            <div class="cs-metric-val">96</div>
+            <div class="cs-metric-desc">Best Practices score</div>
+          </div>
+          <div class="cs-metric-card">
+            <div class="cs-metric-val">+12.3%</div>
+            <div class="cs-metric-desc">Monthly traffic growth post-launch</div>
+          </div>
+        </div>
+
+        <div class="cs-results-2col">
+          <div class="cs-results-card">
+            <div class="cs-results-label cs-results-label--traffic">Traffic</div>
+            <p class="cs-results-body">US country rank improved from ~#1,000,000 to #529,173 — a significant jump driven by improved page speed and the new city landing pages.</p>
+          </div>
+          <div class="cs-results-card">
+            <div class="cs-results-label cs-results-label--perf">Performance</div>
+            <p class="cs-results-body">Pingdom rating went from C to A. All images converted to WebP, reducing page weight by over 60% across key landing pages.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 09 — REFLECTION -->
+      <section class="cs-section cs-reveal" id="reflection">
+        <span class="cs-section-eyebrow">09 — Reflection</span>
+        <h2 class="cs-h2">What I'd do differently</h2>
+        <p class="cs-p">If I had more time on this project, I would have pushed for user testing on the navigation structure before finalising it. The mega menu was designed based on competitor research and best practices — but real user feedback on how people search for pest services would have strengthened the decision.</p>
+        <p class="cs-p">I also would have liked to design a more robust analytics setup from the start — proper event tracking on the CTAs to measure conversion rate directly, not just traffic.</p>
+
+        <div class="cs-dark-quote">
+          <p class="cs-dark-quote-text">"Making something look premium isn't about complexity — it's about consistency. The brand colours were perfectly fine. What was missing was a clear system that applied them intentionally. Once that was in place, the gap between Drake's and TruGreen became much smaller than the client expected."</p>
+          <span class="cs-dark-quote-attr">— Aman Patel, Lead Designer</span>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- NEXT PROJECT CARD -->
+  <div class="cs-next-wrap cs-reveal">
+    <a href="penmar-case-study.html" class="cs-next-card">
+      <div>
+        <p class="cs-next-label">Next case study</p>
+        <span class="cs-next-title">Penmar Wealth Management →</span>
+      </div>
+      <div class="cs-next-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    // ============ CUSTOM CURSOR ============
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.classList.add('is-hover'); ring.classList.add('is-hover'); });
+      el.addEventListener('mouseleave', () => { dot.classList.remove('is-hover'); ring.classList.remove('is-hover'); });
+    });
+
+    // ============ NAV SCROLL BEHAVIOUR ============
+    window.addEventListener('scroll', () => {
+      document.querySelector('.nav').classList.toggle('is-scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ============ HERO CONTENT FADE-IN ============
+    document.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.querySelector('.cs-hero-content');
+          if (el) el.classList.add('is-in');
+        });
+      });
+    });
+
+    // ============ SCROLL REVEAL FOR SECTIONS ============
+    const reveals = document.querySelectorAll('.cs-reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => revealObs.observe(el));
+
+    // ============ SCROLL SPY — SIDEBAR ACTIVE LINK ============
+    const sections = document.querySelectorAll('.cs-section[id]');
+    const navLinks = document.querySelectorAll('.cs-nav-link');
+    const spyObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const active = document.querySelector(`.cs-nav-link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '-64px 0px -40% 0px' });
+    sections.forEach(s => spyObs.observe(s));
+
+    // ============ SMOOTH SCROLL FOR SIDEBAR LINKS ============
+    document.querySelectorAll('.cs-nav-link[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>

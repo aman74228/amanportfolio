@@ -198,6 +198,7 @@ const projects = [
     ],
     pills: ['Redesign', 'Pest Control', 'USA'],
     imageLabel: "PRODUCT SHOT — DRAKE'S LAWN & PEST CONTROL",
+    cta: 'drakes-case-study.html',
   },
   {
     year: '2025',
@@ -210,6 +211,7 @@ const projects = [
     ],
     pills: ['New Build', 'Wealth Mgmt', 'USA'],
     imageLabel: 'PRODUCT SHOT — PENMAR WEALTH MANAGEMENT',
+    cta: '#',
   },
 ];
 
@@ -249,7 +251,7 @@ const ProjectBlock = ({ project, isLast }) => {
           <div className="sw-pills">
             {project.pills.map((pill, i) => <span className="sw-pill" key={i}>{pill}</span>)}
           </div>
-          <a href="#" className="text-link sw-cta">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
+          <a href={project.cta} className="text-link sw-cta">Checkout case study <span className="arrow"><Icon name="arrow-right" size={14}/></span></a>
         </div>
       </div>
       {!isLast && <div className="sw-separator"></div>}
