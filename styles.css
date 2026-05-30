@@ -795,7 +795,7 @@ img { display: block; max-width: 100%; }
 
 .ai-arena {
   position: relative;
-  min-height: 520px;
+  min-height: 680px;
   width: 100%;
 }
 
@@ -843,13 +843,12 @@ img { display: block; max-width: 100%; }
   background: var(--white);
   border: 1px solid #E8E3DC;
   border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 14px 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  min-width: 120px;
+  min-width: 100px;
   will-change: transform, opacity;
 }
 
@@ -875,28 +874,22 @@ img { display: block; max-width: 100%; }
 
 .ai-tool-name {
   font-family: var(--sans);
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 11px;
+  color: #9A9188;
   text-align: center;
   white-space: nowrap;
+  margin-top: 8px;
 }
 
-@keyframes float1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translateY(-3px); }
-  50% { transform: translateY(5px); }
-}
-@keyframes float3 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes float4 {
-  0%, 100% { transform: translateY(-2px); }
-  50% { transform: translateY(6px); }
-}
+@keyframes float1 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-8px); } }
+@keyframes float2 { 0%, 100% { transform: translateY(-3px); }  50% { transform: translateY(5px); } }
+@keyframes float3 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-9px); } }
+@keyframes float4 { 0%, 100% { transform: translateY(-4px); }  50% { transform: translateY(6px); } }
+@keyframes float5 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-7px); } }
+@keyframes float6 { 0%, 100% { transform: translateY(-2px); }  50% { transform: translateY(8px); } }
+@keyframes float7 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-10px); } }
+@keyframes float8 { 0%, 100% { transform: translateY(-3px); }  50% { transform: translateY(7px); } }
+@keyframes float9 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-6px); } }
 
 .ai-note {
   margin-top: 56px;
