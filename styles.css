@@ -795,7 +795,7 @@ img { display: block; max-width: 100%; }
 
 .ai-arena {
   position: relative;
-  min-height: 680px;
+  min-height: 560px;
   width: 100%;
 }
 
