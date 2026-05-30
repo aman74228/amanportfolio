@@ -215,34 +215,27 @@ const projects = [
 
 const ProjectBlock = ({ project, isLast }) => {
   const blockRef = React.useRef(null);
-  const [thumbIn, setThumbIn] = React.useState(false);
-  const [detailsIn, setDetailsIn] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
     const el = blockRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setThumbIn(true);
-          setTimeout(() => setDetailsIn(true), 200);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.15 }
+      ([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } },
+      { threshold: 0.1 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <div className="sw-block" ref={blockRef}>
+    <div className={`sw-block${visible ? ' sw-block--in' : ''}`} ref={blockRef}>
       <div className="sw-thumb-wrap">
-        <div className={`sw-thumb${thumbIn ? ' sw-thumb--in' : ''}`}>
+        <div className="sw-thumb">
           <div className="sw-thumb-label">[ {project.imageLabel} ]</div>
         </div>
       </div>
-      <div className={`sw-details${detailsIn ? ' sw-details--in' : ''}`}>
+      <div className="sw-details">
         <div className="sw-details-left">
           <h3 className="sw-project-title">{project.title}</h3>
           <p className="sw-project-desc">{project.description}</p>
@@ -265,37 +258,47 @@ const ProjectBlock = ({ project, isLast }) => {
 };
 
 const SelectedWork = () => {
-  const headRef = React.useRef(null);
-  const [headIn, setHeadIn] = React.useState(false);
+  const headPinRef = React.useRef(null);
+  const headingRef = React.useRef(null);
+  const cardsRef = React.useRef(null);
 
   React.useEffect(() => {
-    const el = headRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setHeadIn(true); io.disconnect(); } },
-      { threshold: 0.3 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    const onScroll = () => {
+      const pin = headPinRef.current;
+      const heading = headingRef.current;
+      const cards = cardsRef.current;
+      if (!pin || !heading || !cards) return;
+      const pinRect = pin.getBoundingClientRect();
+      const cardsRect = cards.getBoundingClientRect();
+      const overlap = pinRect.bottom - cardsRect.top;
+      const fadeStart = pinRect.height * 0.15;
+      const fadeEnd = pinRect.height * 0.6;
+      const progress = Math.max(0, Math.min(1, (overlap - fadeStart) / (fadeEnd - fadeStart)));
+      heading.style.opacity = 1 - progress;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <section className="section sw-section" id="work">
-      <div className="container">
-        <div className={`sw-heading${headIn ? ' sw-heading--in' : ''}`} ref={headRef}>
+    <section className="sw-section" id="work">
+      <div className="sw-head-pin" ref={headPinRef}>
+        <div className="sw-heading" ref={headingRef}>
           <span className="sw-eyebrow">02 — Selected Work</span>
           <h2 className="sw-title">
             Projects that<br/><em>shipped.</em>
           </h2>
           <div className="sw-year-stamp">2K25</div>
         </div>
-        <div className="sw-projects">
+      </div>
+      <div className="sw-cards" ref={cardsRef}>
+        <div className="container">
           {projects.map((p, i) => (
             <ProjectBlock key={p.title} project={p} isLast={i === projects.length - 1} />
           ))}
-        </div>
-        <div className="sw-more-soon">
-          <span>More coming soon</span>
+          <div className="sw-more-soon">
+            <span>More coming soon</span>
+          </div>
         </div>
       </div>
     </section>
