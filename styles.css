@@ -840,21 +840,15 @@ img { display: block; max-width: 100%; }
 }
 
 .ai-tool-card {
-  background: var(--white);
-  border: 1px solid #E8E3DC;
-  border-radius: 16px;
-  padding: 14px 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  min-width: 100px;
+  justify-content: center;
   will-change: transform, opacity;
 }
 
 .ai-tool-logo {
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
 }
 
@@ -870,15 +864,6 @@ img { display: block; max-width: 100%; }
   font-size: 18px;
   font-weight: 700;
   color: var(--accent);
-}
-
-.ai-tool-name {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: #9A9188;
-  text-align: center;
-  white-space: nowrap;
-  margin-top: 8px;
 }
 
 @keyframes float1 { 0%, 100% { transform: translateY(0px); }   50% { transform: translateY(-8px); } }
